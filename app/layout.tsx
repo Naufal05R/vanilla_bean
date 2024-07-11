@@ -5,6 +5,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import { IconBrandWhatsapp, IconPhone } from "@tabler/icons-react";
+import { Button } from "@/components/ui/button";
+import { ArrowUp } from "lucide-react";
+import { ScrollToTopButton } from "@/components/Button";
 
 const playfair_display = Playfair_Display({
   subsets: ["latin"],
@@ -30,21 +33,29 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`px-4 sm:px-8 lg:px-16 font-sans min-h-screen antialiased ${playfair_display.variable} ${outfit.variable}`}
+        className={`font-sans min-h-screen scroll-smooth px-4 antialiased sm:px-8 lg:px-16 ${playfair_display.variable} ${outfit.variable}`}
       >
         <Header />
-        <main className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between rounded-2xl lg:rounded-[4rem] border-8 lg:border-[24px] border-stone-200 p-2.5 lg:p-8">
-          <div className="flex flex-col w-full rounded-[10px] lg:rounded-3xl border-8 lg:border-[12px] border-stone-200 p-3.5">
+        <main className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between rounded-2xl border-8 border-stone-200 p-2.5 lg:rounded-[4rem] lg:border-[24px] lg:p-8">
+          <div className="flex w-full flex-col rounded-[10px] border-8 border-stone-200 p-3.5 lg:rounded-3xl lg:border-[12px]">
             {children}
           </div>
         </main>
         <Footer />
 
+        <ScrollToTopButton />
+
         <fieldset className="fixed bottom-0 right-20 space-x-1 text-white">
-          <Link href={"/"} className="inline-flex rounded-t-lg bg-stone-800 p-4">
+          <Link
+            href={"/"}
+            className="inline-flex rounded-t-lg bg-stone-800 p-4"
+          >
             <IconPhone />
           </Link>
-          <Link href={"/"} className="inline-flex rounded-t-lg bg-stone-800 p-4">
+          <Link
+            href={"/"}
+            className="inline-flex rounded-t-lg bg-stone-800 p-4"
+          >
             <IconBrandWhatsapp />
           </Link>
         </fieldset>
