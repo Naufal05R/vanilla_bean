@@ -1,8 +1,21 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Playfair_Display, Outfit } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import Link from "next/link";
+import { IconBrandWhatsapp, IconPhone } from "@tabler/icons-react";
 
-const inter = Inter({ subsets: ["latin"] });
+const playfair_display = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["400", "700", "900"],
+});
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-body",
+  weight: ["400", "500"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +29,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={`px-4 sm:px-8 lg:px-16 font-sans min-h-screen antialiased ${playfair_display.variable} ${outfit.variable}`}
+      >
+        <Header />
+        <main className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between rounded-2xl lg:rounded-[4rem] border-8 lg:border-[24px] border-stone-200 p-2.5 lg:p-8">
+          <div className="flex flex-col w-full rounded-[10px] lg:rounded-3xl border-8 lg:border-[12px] border-stone-200 p-3.5">
+            {children}
+          </div>
+        </main>
+        <Footer />
+
+        <fieldset className="fixed bottom-0 right-20 space-x-1 text-white">
+          <Link href={"/"} className="inline-flex rounded-t-lg bg-stone-800 p-4">
+            <IconPhone />
+          </Link>
+          <Link href={"/"} className="inline-flex rounded-t-lg bg-stone-800 p-4">
+            <IconBrandWhatsapp />
+          </Link>
+        </fieldset>
+      </body>
     </html>
   );
 }
