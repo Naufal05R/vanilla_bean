@@ -31,12 +31,10 @@ export default function PricelistPage() {
           >
             <p className="min-w-10 py-1 text-center">{productItemIndex + 1}</p>
             <p className="flex-grow text-wrap py-1 pl-2">{productItem.name}</p>
-            <p className="min-w-24 py-1 max-sm:text-center sm:w-32 sm:pl-2">
-              <span className="max-sm:hidden">
+            <p className="min-w-24 py-1 sm:w-32 pl-2">
+              <span>
                 {formatPrice(productItem.price)}
               </span>
-
-              <span className="sm:hidden">{productItem.price}</span>
             </p>
           </li>
         ))}
